@@ -19,11 +19,11 @@ import java.util.List;
  **/
 public class ProbabilityTestDemo2 extends BaseProbabilityTest {
     public static void main(String[] args) {
-        //两副牌四人斗地主天王炸概率实验
         //实验次数
         int testTimes = 30000;
         //实验结果明细输出文件路径
         String saveFilePath = "E:\\Engineering\\java\\idea\\doudizhu\\output_example\\实验结果_两副牌四人斗地主天王炸概率.txt";
+//        ProbabilityTestDemo3.testFourPlayersTwoPairsDouDizhuWithFourJokers(testTimes, null); //不输出到文件
         ProbabilityTestDemo2.testFourPlayersTwoPairsDouDizhuWithFourJokers(testTimes, saveFilePath);
 
     }

@@ -19,11 +19,11 @@ import java.util.List;
  **/
 public class ProbabilityTestDemo1 extends BaseProbabilityTest {
     public static void main(String[] args) {
-        //一副牌三人斗地主双王炸概率实验
         //实验次数
         int testTimes = 50000;
         //实验结果明细输出文件路径
         String saveFilePath = "C:\\Users\\92970\\Desktop\\实验结果_一副牌三人斗地主双王炸概率.txt";
+//        ProbabilityTestDemo1.testThreePlayersOnePairDouDizhuWithDoubleJokers(testTimes, null);//不输出到文件
         ProbabilityTestDemo1.testThreePlayersOnePairDouDizhuWithDoubleJokers(testTimes, null);
 
     }
@@ -144,46 +144,46 @@ public class ProbabilityTestDemo1 extends BaseProbabilityTest {
         result.append("=================实验结果=================").append("\n");
         result.append("实验次数: ").append(testTimes).append("\n");
         double pBefore = doubleJokersTimesBeforeCall * 1.0 / testTimes;
-        result.append("全场天王炸（叫地主前）出现次数: ").append(doubleJokersTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", pBefore * 100)).append("%，");
+        result.append("全场4星炸（叫地主前）出现次数: ").append(doubleJokersTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", pBefore * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / pBefore)).append("把出现一次。");
         double pAfter = doubleJokersTimesAfterCall * 1.0 / testTimes;
-        result.append("全场天王炸（叫地主后）出现次数: ").append(doubleJokersTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", pAfter * 100)).append("%，");
+        result.append("全场4星炸（叫地主后）出现次数: ").append(doubleJokersTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", pAfter * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / pAfter)).append("把出现一次。").append("\n");
 
         double p1Before = player1DoubleJokersTimesBeforeCall * 1.0 / testTimes;
-        result.append("player1天王炸（叫地主前）出现次数: ").append(player1DoubleJokersTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p1Before * 100)).append("%，");
+        result.append("player14星炸（叫地主前）出现次数: ").append(player1DoubleJokersTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p1Before * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p1Before)).append("把出现一次。");
         double p1After = player1DoubleJokersTimesAfterCall * 1.0 / testTimes;
-        result.append("player1天王炸（叫地主后）出现次数: ").append(player1DoubleJokersTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p1After * 100)).append("%，");
+        result.append("player14星炸（叫地主后）出现次数: ").append(player1DoubleJokersTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p1After * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p1After)).append("把出现一次。").append("\n");
 
         double p2Before = player2DoubleJokersTimesBeforeCall * 1.0 / testTimes;
-        result.append("player2天王炸（叫地主前）出现次数: ").append(player2DoubleJokersTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p2Before * 100)).append("%，");
+        result.append("player24星炸（叫地主前）出现次数: ").append(player2DoubleJokersTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p2Before * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p2Before)).append("把出现一次。");
         double p2After = player2DoubleJokersTimesAfterCall * 1.0 / testTimes;
-        result.append("player2天王炸（叫地主后）出现次数: ").append(player2DoubleJokersTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p2After * 100)).append("%，");
+        result.append("player24星炸（叫地主后）出现次数: ").append(player2DoubleJokersTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p2After * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p2After)).append("把出现一次。").append("\n");
 
         double p3Before = player3DoubleJokersTimesBeforeCall * 1.0 / testTimes;
-        result.append("player3天王炸（叫地主前）出现次数: ").append(player3DoubleJokersTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p3Before * 100)).append("%，");
+        result.append("player34星炸（叫地主前）出现次数: ").append(player3DoubleJokersTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p3Before * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p3Before)).append("把出现一次。");
         double p3After = player3DoubleJokersTimesAfterCall * 1.0 / testTimes;
-        result.append("player3天王炸（叫地主后）出现次数: ").append(player3DoubleJokersTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p3After * 100)).append("%，");
+        result.append("player34星炸（叫地主后）出现次数: ").append(player3DoubleJokersTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p3After * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p3After)).append("把出现一次。").append("\n");
 
         double _pBefore = (p1Before + p2Before + p3Before) / 3;
-        result.append("平均每个玩家天王炸（叫地主前）概率: ").append(String.format("%.3f", _pBefore * 100)).append("%，");
+        result.append("平均每个玩家4星炸（叫地主前）概率: ").append(String.format("%.3f", _pBefore * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / _pBefore)).append("把出现一次。");
         double _pAfter = (p1After + p2After + p3After) / 3;
-        result.append("平均每个玩家天王炸（叫地主后）概率: ").append(String.format("%.3f", _pAfter * 100)).append("%，");
+        result.append("平均每个玩家4星炸（叫地主后）概率: ").append(String.format("%.3f", _pAfter * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / _pAfter)).append("把出现一次。").append("\n");
 
         //理论值
         double ptBefore = 136 * 1.0 / 1431;
-        result.append("每个玩家天王炸（叫地主前）概率理论值: ").append(String.format("%.3f", ptBefore * 100)).append("%，");
+        result.append("每个玩家4星炸（叫地主前）概率理论值: ").append(String.format("%.3f", ptBefore * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / ptBefore)).append("把出现一次。");
         double ptAfter = 190 * 1.0 / 1431;
-        result.append("每个玩家天王炸（叫地主后）概率理论值: ").append(String.format("%.3f", ptAfter * 100)).append("%，");
+        result.append("每个玩家4星炸（叫地主后）概率理论值: ").append(String.format("%.3f", ptAfter * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / ptAfter)).append("把出现一次。").append("\n");
 
 

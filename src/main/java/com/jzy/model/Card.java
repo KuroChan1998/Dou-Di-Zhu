@@ -95,6 +95,16 @@ public class Card implements Comparable<Card> {
     }
 
     /**
+     * 判断两张牌的牌面数值是否相同，不考虑花色
+     *
+     * @param c 另一张牌
+     * @return
+     */
+    public boolean equalsValue(Card c){
+        return DEFAULT_COMPARATOR.compare(this, c) == 0;
+    }
+
+    /**
      * 两张牌成员方法比较使用默认比较器的比较策略，即仅比较大小
      *
      * @param c
