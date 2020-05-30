@@ -13,8 +13,5 @@ import java.io.OutputStreamWriter;
  * @Version 1.0
  **/
 public class FileUtils extends org.apache.commons.io.FileUtils {
-    public static void main(String[] args) throws IOException {
-        FileUtils.write(new File("C:\\Users\\92970\\Desktop\\1.txt"), "aa", true);
 
-    }
 }

@@ -1,6 +1,7 @@
 package com.jzy.util;
 
 import com.jzy.game.onepair.ThreePlayersOnePairDouDizhuGame;
+import com.jzy.game.twopair.FourPlayersTwoPairsDouDizhuGame;
 import com.jzy.model.Card;
 import com.jzy.model.CardColor;
 import com.jzy.model.CardValue;
@@ -131,14 +132,14 @@ public class CardUtils {
         if (cards == null || cards.size() < 4) {
             return false;
         }
-        if (sorted) {
+        if (!sorted) {
             //这里检测炸弹仅对面值排序即可，无需对花色排序
             Collections.sort(cards);
         }
         int bombSize = 4;
 
         int shift = 1;
-        for (int i = 0; i < cards.size() - bombSize; i += shift) {
+        for (int i = 0; i <= cards.size() - bombSize; i += shift) {
             Card card0 = cards.get(i);
             int repeatTimes = 1;
             for (int j = i + 1; j < i + bombSize; j++) {
@@ -160,14 +161,52 @@ public class CardUtils {
         return false;
     }
 
-    public static void main(String[] args) {
-        ThreePlayersOnePairDouDizhuGame game = new ThreePlayersOnePairDouDizhuGame();
-        game.sendCards();
-        System.out.println(hasBombExceptDoubleJokersWithinOnePair(game.getPlayer1(), true));
-        System.out.println(hasBombExceptDoubleJokersWithinOnePair(game.getPlayer2(), true));
-        System.out.println(hasBombExceptDoubleJokersWithinOnePair(game.getPlayer3(), true));
+    /**
+     * 判断输入的牌中是否至少有一个n星以上炸弹，总的牌范围为两副牌
+     *
+     * @param cards     输入的牌
+     * @param sorted    输入的牌是否已排序
+     * @param bombLevel 炸弹星级n
+     * @return 是否至少有一个n星以上炸弹
+     */
+    public static boolean hasBombExceptDoubleJokersWithinTwoPairs(List<Card> cards, boolean sorted, int bombLevel) {
+        if (!(bombLevel >= 4 && bombLevel <= 8)) {
+            return false;
+        }
+        if (cards == null || cards.size() < bombLevel) {
+            return false;
+        }
+        if (!sorted) {
+            //这里检测炸弹仅对面值排序即可，无需对花色排序
+            Collections.sort(cards);
+        }
 
-        System.out.println(hasBombExceptDoubleJokersWithinOnePair(Arrays.asList(new Card(CardValue.K),new Card(CardValue.K),new Card(CardValue.K),
-                new Card(CardValue.Q), new Card(CardValue.Q), new Card(CardValue.Q), new Card(CardValue.Q),new Card(CardValue.J)), true));
+        int shift = 1;
+        for (int i = 0; i <= cards.size() - bombLevel; i += shift) {
+            Card card0 = cards.get(i);
+            int repeatTimes = 1;
+            for (int j = i + 1; j < i + bombLevel; j++) {
+                if (!card0.equalsValue(cards.get(j))) {
+                    //不相等，下次检查的指针后移j-i，即shift值为j-i;
+                    shift = j - i;
+                    break;
+                } else {
+                    //相等
+                    repeatTimes++;
+                }
+            }
+            if (repeatTimes == bombLevel) {
+                //出现炸弹
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        int level = 5;
+
+        System.out.println(hasBombExceptDoubleJokersWithinTwoPairs(Arrays.asList(
+                new Card(CardValue.Q), new Card(CardValue.Q), new Card(CardValue.Q), new Card(CardValue.Q), new Card(CardValue.Q),new Card(CardValue.K), new Card(CardValue.K), new Card(CardValue.K)), true, level));
     }
 }

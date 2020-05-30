@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @ClassName ProbabilityTestDemo1
  * @Author JinZhiyun
- * @Description 一副牌三人斗地主普通4星概率实验
+ * @Description 一副牌三人斗地主普通四星概率实验
  * @Date 2020/5/29 12:54
  * @Version 1.0
  **/
@@ -22,7 +22,7 @@ public class ProbabilityTestDemo3 extends BaseProbabilityTest {
         //实验次数
         int testTimes = 1000000;
         //实验结果明细输出文件路径
-        String saveFilePath = "C:\\Users\\92970\\Desktop\\实验结果_一副牌三人斗地主普通4星炸概率.txt";
+        String saveFilePath = "C:\\Users\\92970\\Desktop\\实验结果_一副牌三人斗地主普通四星炸概率.txt";
         ProbabilityTestDemo3.testThreePlayersOnePairDouDizhuWithLevel4Bomb(testTimes, null);//不输出到文件
 
     }
@@ -36,7 +36,7 @@ public class ProbabilityTestDemo3 extends BaseProbabilityTest {
     }
 
     /**
-     * 一副牌三人斗地主普通4星概率实验
+     * 一副牌三人斗地主普通四星概率实验
      *
      * @param testTimes     实验频数
      * @param writeFilePath 将实验结果写入的文件文件
@@ -79,7 +79,7 @@ public class ProbabilityTestDemo3 extends BaseProbabilityTest {
             List<Card> player3 = game.getPlayer3();
             boolean player3HasLevel4BombBeforeCall = CardUtils.hasBombExceptDoubleJokersWithinOnePair(player3, true);
             hasLevel4BombBeforeCall |= player3HasLevel4BombBeforeCall;
-            detail.append("是否出现天王炸（叫地主前）: ").append(hasLevel4BombBeforeCall).append("\n");
+            detail.append("是否出现四星炸（叫地主前）: ").append(hasLevel4BombBeforeCall).append("\n");
 
             if (player1HasLevel4BombBeforeCall) {
                 player1Level4BombTimesBeforeCall++;
@@ -109,7 +109,7 @@ public class ProbabilityTestDemo3 extends BaseProbabilityTest {
             detail.append("player3叫地主后的牌: ").append(player3CallLord).append("\n");
             boolean player3HasLevel4BombAfterCall = CardUtils.hasBombExceptDoubleJokersWithinOnePair(player3CallLord, true);
             hasLevel4BombAfterCall |= player3HasLevel4BombAfterCall;
-            detail.append("是否出现天王炸（叫地主后）: ").append(hasLevel4BombAfterCall).append("\n");
+            detail.append("是否出现四星炸（叫地主后）: ").append(hasLevel4BombAfterCall).append("\n");
             detail.append("\n");
 
             if (player1HasLevel4BombAfterCall) {
@@ -143,41 +143,47 @@ public class ProbabilityTestDemo3 extends BaseProbabilityTest {
         result.append("=================实验结果=================").append("\n");
         result.append("实验次数: ").append(testTimes).append("\n");
         double pBefore = level4BombTimesBeforeCall * 1.0 / testTimes;
-        result.append("全场天王炸（叫地主前）出现次数: ").append(level4BombTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", pBefore * 100)).append("%，");
+        result.append("全场四星炸（叫地主前）出现次数: ").append(level4BombTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", pBefore * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / pBefore)).append("把出现一次。");
         double pAfter = level4BombTimesAfterCall * 1.0 / testTimes;
-        result.append("全场天王炸（叫地主后）出现次数: ").append(level4BombTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", pAfter * 100)).append("%，");
+        result.append("全场四星炸（叫地主后）出现次数: ").append(level4BombTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", pAfter * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / pAfter)).append("把出现一次。").append("\n");
 
         double p1Before = player1Level4BombTimesBeforeCall * 1.0 / testTimes;
-        result.append("player1天王炸（叫地主前）出现次数: ").append(player1Level4BombTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p1Before * 100)).append("%，");
+        result.append("player1四星炸（叫地主前）出现次数: ").append(player1Level4BombTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p1Before * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p1Before)).append("把出现一次。");
         double p1After = player1Level4BombTimesAfterCall * 1.0 / testTimes;
-        result.append("player1天王炸（叫地主后）出现次数: ").append(player1Level4BombTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p1After * 100)).append("%，");
+        result.append("player1四星炸（叫地主后）出现次数: ").append(player1Level4BombTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p1After * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p1After)).append("把出现一次。").append("\n");
 
         double p2Before = player2Level4BombTimesBeforeCall * 1.0 / testTimes;
-        result.append("player2天王炸（叫地主前）出现次数: ").append(player2Level4BombTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p2Before * 100)).append("%，");
+        result.append("player2四星炸（叫地主前）出现次数: ").append(player2Level4BombTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p2Before * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p2Before)).append("把出现一次。");
         double p2After = player2Level4BombTimesAfterCall * 1.0 / testTimes;
-        result.append("player2天王炸（叫地主后）出现次数: ").append(player2Level4BombTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p2After * 100)).append("%，");
+        result.append("player2四星炸（叫地主后）出现次数: ").append(player2Level4BombTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p2After * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p2After)).append("把出现一次。").append("\n");
 
         double p3Before = player3Level4BombTimesBeforeCall * 1.0 / testTimes;
-        result.append("player3天王炸（叫地主前）出现次数: ").append(player3Level4BombTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p3Before * 100)).append("%，");
+        result.append("player3四星炸（叫地主前）出现次数: ").append(player3Level4BombTimesBeforeCall).append("，出现概率: ").append(String.format("%.3f", p3Before * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p3Before)).append("把出现一次。");
         double p3After = player3Level4BombTimesAfterCall * 1.0 / testTimes;
-        result.append("player3天王炸（叫地主后）出现次数: ").append(player3Level4BombTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p3After * 100)).append("%，");
+        result.append("player3四星炸（叫地主后）出现次数: ").append(player3Level4BombTimesAfterCall).append("，出现概率: ").append(String.format("%.3f", p3After * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / p3After)).append("把出现一次。").append("\n");
 
         double _pBefore = (p1Before + p2Before + p3Before) / 3;
-        result.append("平均每个玩家天王炸（叫地主前）概率: ").append(String.format("%.3f", _pBefore * 100)).append("%，");
+        result.append("平均每个玩家四星炸（叫地主前）概率: ").append(String.format("%.3f", _pBefore * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / _pBefore)).append("把出现一次。");
         double _pAfter = (p1After + p2After + p3After) / 3;
-        result.append("平均每个玩家天王炸（叫地主后）概率: ").append(String.format("%.3f", _pAfter * 100)).append("%，");
+        result.append("平均每个玩家四星炸（叫地主后）概率: ").append(String.format("%.3f", _pAfter * 100)).append("%，");
         result.append("平均每").append(String.format("%.2f", 1.0 / _pAfter)).append("把出现一次。").append("\n");
 
-
+        //理论值
+        double ptBefore = 0.0960164;
+        result.append("每个玩家四星炸（叫地主前）概率理论值: ").append(String.format("%.3f", ptBefore * 100)).append("%，");
+        result.append("平均每").append(String.format("%.2f", 1.0 / ptBefore)).append("把出现一次。");
+//        double ptAfter = 0.007636;
+//        result.append("每个玩家天王炸（叫地主后）概率理论值: ").append(String.format("%.3f", ptAfter * 100)).append("%，");
+//        result.append("平均每").append(String.format("%.2f", 1.0 / ptAfter)).append("把出现一次。").append("\n");
 
 
         if (StringUtils.isNotEmpty(writeFilePath)) {
