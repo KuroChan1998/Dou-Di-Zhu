@@ -34,8 +34,6 @@ public class ProbabilityTestDemo4 extends BaseProbabilityTest {
         //炸弹级别
         int bombLevel8 = 8;
         ProbabilityTestDemo4.testFourPlayersTwoPairsDouDizhuWithBombGreaterThanLevel(testTimes, null, bombLevel8);
-
-
     }
 
     /**
